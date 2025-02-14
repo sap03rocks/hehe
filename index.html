@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff0f5;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            flex-direction: column;
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 3em;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .gif-container img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .yes-button, .no-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .yes-button {
+            background-color: #4caf50;
+            color: white;
+        }
+        .no-button {
+            background-color: #f44336;
+            color: white;
+        }
+        .gif_container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wanna go out on the 15th?</h1>
+    <div class="container">
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/SyR7VvbciZqrm/giphy.gif?cid=790b7611n2et03zcx5fxxdc0vgtayssvtlj0dt364k368aoq&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cute Teddy Bear">
+        </div>
+    </div>
+    <script>
+        const messages = [
+            "Are you sure?",
+            "Really sure??",
+            "Are you positive?",
+            "Please reconsider...",
+            "Think about it!",
+            "If you say no, I'll be sad...",
+            "I'll be very sad...",
+            "Very, very, very sad...",
+            "Ok, I'll stop asking...",
+            "Just kidding, say yes! ❤️"
+        ];
+
+        let messageIndex = 0;
+
+        function handleNoClick() {
+            const noButton = document.querySelector('.no-button');
+            const yesButton = document.querySelector('.yes-button');
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${currentSize * 1.5}px`;
+        }
+
+        function handleYesClick() {
+            document.body.innerHTML = `
+                <div class="container">
+                    <h1 class="header_text">Knew you would say yes!</h1>
+                    <div class="gif_container">
+                        <img src="https://media.giphy.com/media/QavMUNzmD2HPq/giphy.gif?cid=790b76114hr4iqv4cro0db8k107jftv4xbovjhqtglt3yg8n&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Happy Teddy Bear">
+                    </div>
+                </div>`;
+        }
+    </script>
+</body>
+</html>
